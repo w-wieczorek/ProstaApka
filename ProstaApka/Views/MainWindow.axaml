@@ -3,9 +3,10 @@
         xmlns:vm="using:ProstaApka.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="450"
         x:Class="ProstaApka.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
+        Background="FloralWhite"
         Title="ProstaApka">
 
     <Design.DataContext>
@@ -14,6 +15,30 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    <Window.Styles>
+        <Style Selector="DataGrid">
+            <Setter Property="GridLinesVisibility" Value="All" />
+        </Style>
+    </Window.Styles>
+    
+    <DockPanel LastChildFill="True">
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
+            <Button Command="{Binding AddCommand1}" Content="Typ 1"></Button>
+            <Button Command="{Binding AddCommand2}" Content="Typ 2"></Button>
+            <Button Command="{Binding AddCommand3}" Content="Typ 3"></Button>
+        </StackPanel>
+        <DataGrid DockPanel.Dock="Bottom" Name="MyDataGrid" 
+                          Items="{Binding MyAnswerList, Mode=OneWay}" 
+                          AutoGenerateColumns="False" VerticalAlignment="Stretch">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Nr" FontSize="12" Foreground="black"
+                                            Binding="{Binding Id}" 
+                                            Width="1*" IsReadOnly="True" />
+                        <DataGridTextColumn Header="Nazwa" FontSize="12" Foreground="black"
+                                            Binding="{Binding Name}" 
+                                            Width="4*" IsReadOnly="True" />
+                    </DataGrid.Columns>
+                </DataGrid>
+    </DockPanel>    
 
 </Window>
