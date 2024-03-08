@@ -9,7 +9,7 @@ namespace ProstaApka.ViewModels;
 
 public partial class MainWindowViewModel : ObservableObject
 {
-    public ObservableCollection<Osoba> MyAnswerList { get; }
+    public ObservableCollection<Osoba> MyAnswerList { get; } = new();
 
     [RelayCommand]
     public async Task AddCommand1()

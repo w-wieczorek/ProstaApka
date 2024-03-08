@@ -27,8 +27,8 @@
             <Button Command="{Binding AddCommand2}" Content="Typ 2"></Button>
             <Button Command="{Binding AddCommand3}" Content="Typ 3"></Button>
         </StackPanel>
-        <DataGrid DockPanel.Dock="Bottom" Name="MyDataGrid" 
-                          Items="{Binding MyAnswerList, Mode=OneWay}" 
+        <DataGrid DockPanel.Dock="Bottom"
+                          ItemsSource="{Binding MyAnswerList, Mode=TwoWay}" 
                           AutoGenerateColumns="False" VerticalAlignment="Stretch">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Nr" FontSize="12" Foreground="black"
